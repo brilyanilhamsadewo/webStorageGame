@@ -308,6 +308,14 @@
         localTotalVictoryField.innerText =
           localStorage.getItem(localTotalVictoryKey);
       }
+
+      window.addEventListener("beforeunload", function () {
+        sessionUserAnswerField.innerText = "";
+        sessionUserWrongAnswerField.innerText = "";
+        sessionStorage.setItem(sessionUserAttemptsKey, 0);
+        sessionUserAttemptsField.innerText = sessionStorage.getItem(
+          sessionUserAttemptsKey,
+        );
       });
     </script>
   </body>
