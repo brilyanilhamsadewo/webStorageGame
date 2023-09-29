@@ -236,6 +236,13 @@
         );
       });
 
+      // (MATERI 3)
+      playButton.addEventListener("click", function () {
+        sessionStorage.setItem(sessionAnswerKey, getAnswer());
+        beforeGameDisplay.setAttribute("hidden", true);
+        duringGameDisplay.removeAttribute("hidden");
+      });
+
       });
     </script>
   </body>
