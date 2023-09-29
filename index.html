@@ -158,7 +158,7 @@
     </div>
 
     <script>
-      //inisialisasi variabel untuk menampung elemen dokumen
+      //inisialiasi variabel untuk menampung elemen dokumen
       const localTotalVictoryField = document.getElementById(
         "local-total-victory-field",
       );
@@ -198,10 +198,9 @@
         return answer.join("");
       }
 
-      //inisialisasi key untuk session storage
+      //inisialiasi key untuk session storage
       const sessionAnswerKey = "SESSION_ANSWER";
       const sessionUserAttemptsKey = "SESSION_USER_ATTEMPTS";
-      const sessionUserIsPlayingKey = "SESSION_USER_IS_PLAYING";
 
       //inisialisasi key untuk local storage
       const localTotalVictoryKey = "LOCAL_TOTAL_VICTORIES_PLAYED";
@@ -210,15 +209,12 @@
       window.addEventListener("load", function () {
         if (typeof Storage !== "undefined") {
           // (MATERI 1)
-          // inisialisasi semua item web storage yang kita akan gunakan jika belum ada
+          // inisiliasi semua item web storage yang kita akan gunakan jika belum ada
           if (sessionStorage.getItem(sessionAnswerKey) === null) {
             sessionStorage.setItem(sessionAnswerKey, "");
           }
           if (sessionStorage.getItem(sessionUserAttemptsKey) === null) {
             sessionStorage.setItem(sessionUserAttemptsKey, 0);
-          }
-          if (sessionStorage.getItem(sessionUserIsPlayingKey) === null) {
-            sessionStorage.setItem(sessionUserIsPlayingKey, false);
           }
           if (localStorage.getItem(localTotalVictoryKey) === null) {
             localStorage.setItem(localTotalVictoryKey, 0);
@@ -229,6 +225,17 @@
         } else {
           alert("Browser yang Anda gunakan tidak mendukung Web Storage");
         }
+        // inisialiasi semua nilai field pada dokumen yang menggunakan nilai dari web storage
+        sessionUserAttemptsField.innerText = sessionStorage.getItem(
+          sessionUserAttemptsKey,
+        );
+        localTotalVictoryField.innerText =
+          localStorage.getItem(localTotalVictoryKey);
+        localMaximumAttemptField.innerText = localStorage.getItem(
+          localMaximumAttemptsKey,
+        );
+      });
+
       });
     </script>
   </body>
