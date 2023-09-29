@@ -287,6 +287,27 @@
         }
       }
 
+      function updateScore() {
+        const sessionAttemptsValue = parseInt(
+          sessionStorage.getItem(sessionUserAttemptsKey),
+        );
+        const localAttemptsValue = parseInt(
+          localStorage.getItem(localMaximumAttemptsKey),
+        );
+        if (sessionAttemptsValue > localAttemptsValue) {
+          localStorage.setItem(localMaximumAttemptsKey, sessionAttemptsValue);
+          localMaximumAttemptField.innerText = sessionAttemptsValue;
+        }
+        const previousTotalVictoryAmount = parseInt(
+          localStorage.getItem(localTotalVictoryKey),
+        );
+        localStorage.setItem(
+          localTotalVictoryKey,
+          previousTotalVictoryAmount + 1,
+        );
+        localTotalVictoryField.innerText =
+          localStorage.getItem(localTotalVictoryKey);
+      }
       });
     </script>
   </body>
